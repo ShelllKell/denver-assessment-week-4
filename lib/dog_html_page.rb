@@ -1,49 +1,36 @@
 class DogHTMLPage
 
 
-  def initialize(page = "") #don't know why I need this but last one won't work without it
-    @page = page
+  def initialize(array_of_dogs)
+    @array_of_dogs = array_of_dogs
+    @dog_length = array_of_dogs.length
   end
 
+  def title
 
-  # goes through new dogpage and counts how many name symbols there are
-  # returns a sentence with the number of names there are as an interger inside the string
-
-  def title(dogs = "")
-
-    dogs.each do |dog|
-      if [:name] > 0
-        "<h1>There are #{dogs} dogs</h1>"
-      else
-        "<h1>There are no dogs</h1>"
-      end
-    end
-
-
+    "<h1>There are #{no_dogs} dogs</h1>"
 
   end
 
+  def no_dogs
 
-
-  def list(items = [])
-    if items == []
-      ""
+    if @dog_length == 0
+      "no"
     else
-      string_variable = "<ul>"
-      items.each do |item|
-        string_variable += "<li>" + item + "</li>"
-    end
-    string_variable += "</ul>"
-      string_variable
+      @dog_length
     end
 
+  end
 
-  #
-  # if items = []
-  #   ""
-  # else
-  #   p ("<ul><li>#{items[:name]}</li></ul>")
-  # end
+  def list
+
+    name = @array_of_dogs.collect {|dog| dog[:name]}
+  if @array_of_dogs != []
+    "<ul><li>#{name[0]}</li><li>#{name[1]}</li><li>#{name[2]}</li><li>#{name[3]}</li></ul>"
+  else
+    ""
+
+  end
 
   end
 
